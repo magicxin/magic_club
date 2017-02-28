@@ -90,9 +90,11 @@ div.search:hover input{
 }
 a {
 	color : #DADAE0;
+	 text-decoration:none;
 }
 a:hover {
 	color : #FFFFFF;
+	 text-decoration:none;
 }
 strong {
 	font-weight : auto;
