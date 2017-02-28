@@ -2,6 +2,8 @@
 const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
+var User = require('./model/User');
 const hostname = '127.0.0.1';
 //const port = 3000;
 
@@ -13,20 +15,15 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
   console.log("connected");
-  var userSchema = mongoose.Schema({
-	  name : String,
-	  username : String,
-	  password : String
-  });
-  var User = mongoose.model('user' , userSchema);
-  var user1 = new User({ name: 'Silence' });
-  user1.save();
+  
 });
 //添加模板引擎
 app.set('view engine', 'hbs');
 app.set('port' , process.env.PORT || 3000);
 //添加静态文件
 app.use(express.static(__dirname +'/public'));
+//添加表单格数据式化
+app.use(bodyparser());
 //路由
 app.get('/' , function(req , res){
 	res.render('home');
@@ -44,6 +41,14 @@ app.get('/signin' , function(req , res){
 //用户注册
 app.get('/signup' , function(req , res){
 	res.render('signup');
+});
+app.post('/user/signup' , function(req , res){
+	var _user = req.body.user;
+	var user = new User(_user);
+	user.save();
+	//var user1 = new User({ name: 'sss' });
+	//user1.save();
+	console.log(req.body.user);
 });
 app.listen(app.get('port') , function(){
 	console.log('Express started on http://139.199.168.15:' + app.get('port') + ';pressCtrl-C to terminate.');
