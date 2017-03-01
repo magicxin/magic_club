@@ -1,0 +1,27 @@
+{
+  "name": "magic_club",
+  "version": "1.0.0",
+  "description": "this is my own club",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.8.5",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicxin/magic_club.git"
+  },
+  "author": "magic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magicxin/magic_club/issues"
+  },
+  "homepage": "https://github.com/magicxin/magic_club#readme"
+}

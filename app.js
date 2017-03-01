@@ -3,7 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
-var User = require('./model/User');
+var userController = require('./controller/userController');
 const hostname = '127.0.0.1';
 //const port = 3000;
 
@@ -42,13 +42,24 @@ app.get('/signin' , function(req , res){
 app.get('/signup' , function(req , res){
 	res.render('signup');
 });
-app.post('/user/signup' , function(req , res){
-	var _user = req.body.user;
-	var user = new User(_user);
-	user.save();
+app.post('/user/signup' , function(req , res , next){
+	//var _user = req.body.user;
+	//var user = new User(_user);
+	//user.save();
 	//var user1 = new User({ name: 'sss' });
 	//user1.save();
-	console.log(req.body.user);
+	userController.findByUsername(req ,res , function(err , user){
+		if(err){
+			console.log('app err findByUsername');
+		}
+		if(user){
+			res.render('signup' , {msg : '账号已存在'});
+		}else{
+			userController.add(req , res , next);
+				res.redirect('/');
+		}
+	});
+	//console.log(req.body.user);
 });
 app.listen(app.get('port') , function(){
 	console.log('Express started on http://139.199.168.15:' + app.get('port') + ';pressCtrl-C to terminate.');
