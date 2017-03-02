@@ -1,11 +1,12 @@
 ﻿const User = require('../model/User');
 const _ = require('underscore');
 module.exports = {
-	add : function(req , res , next){
+	add : function(req , res ){
 		var _user = new User(req.body.user);
+		console.log(_user)
 		_user.save(function(err ,user){
 			if(err){
-				console.log('controller.add');
+				console.log(err);
 			}
 		});
 	},
@@ -50,6 +51,9 @@ module.exports = {
 	findByUsername : function(req , res , func){
 		var username = req.body.user.username;
 		User.findOne({username : username} , func);	
+	},
+	comparePwd : function(_password , password , func){
+		User.comparePwd(_password , password , func);
 	}
 	
 }

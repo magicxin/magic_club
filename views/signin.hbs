@@ -1,12 +1,31 @@
-﻿<form action="/user_login" method="post">
-	<div class="item">
-		<text>邮箱</text><input type="text" />
-	</div>
-	<div class="item">
-		<text>密码</text><input type="password" />
-	</div>
-	<div class="item">
-		<input class="btn" type="submit" value="登录"/>
-	</div>
-	
+﻿<form action="/user/signin" method="post">
+	{{#if user}}
+		<div class="item">
+			<text>邮箱a</text><input type="text" name="user[username]"/> 
+		</div>
+		<div class="item">
+			<text>密码a</text><input type="password" name="user[password]"/>
+		</div>
+		<div class="item">
+			<text>邮箱a</text><input type="text" name="user[username]"/> 
+		</div>
+		<div class="item">
+			<text>密码a</text><input type="password" name="user[password]"/>
+		</div>
+	{{else}}
+		{{#if msg}}
+			<div class="item">
+				<text>{{msg}}</text> 
+			</div>
+		{{/if}}
+		<div class="item">
+			<text>邮箱</text><input type="text" name="user[username]"/> 
+		</div>
+		<div class="item">
+			<text>密码</text><input type="password" name="user[password]"/>
+		</div>
+		<div class="item">
+			<input class="btn" type="submit" value="登录"/>
+		</div>
+	{{/if}}
 </form>
