@@ -106,34 +106,7 @@ app.get('/home' , function(req , res){
 			updatetime : '13分钟前',
 			goodidea : 36,
 		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
+		
 	]
 	var result = md.render('# markdown-it rulezz!');
 	res.render('home' , {articles : articles});
