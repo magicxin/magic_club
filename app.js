@@ -9,9 +9,14 @@ const cookie = require('cookie-parser');
 const mongoStore = require('connect-mongo')(session);
 
 //marrkdown-it编辑插件
-// node.js, "classic" way:
-var MarkdownIt = require('markdown-it'),
-    md = new MarkdownIt();
+// node.js, "classic" way
+var md = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true
+});
+//var MarkdownIt = require('markdown-it'),
+ //   md = new MarkdownIt();
 
 // node.js, the same, but with sugar:
 //var md = require('markdown-it')();
@@ -23,6 +28,7 @@ var MarkdownIt = require('markdown-it'),
 //var result = md.render('# markdown-it rulezz!');
 
 var userController = require('./controller/userController');
+var articleController = require('./controller/articleController');
 const hostname = '127.0.0.1';
 //const port = 3000;
 const dburl = 'mongodb://localhost/magic_club';
@@ -46,6 +52,9 @@ app.set('port' , process.env.PORT || 3000);
 app.use(express.static(__dirname +'/public'));
 //添加表单格数据式化
 app.use(bodyparser());
+//app.use(bodyparser.json()); // for parsing application/json
+//app.use(bodyparser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+//app.use(multer()); // for parsing multipart/form-data
 //添加支持session  cookie
 app.use(cookie());
 //添加session
@@ -57,78 +66,58 @@ app.use(session({
 	 })
 }));
 //中间件对于session预处理
- app.use(function(req , res , next){
+/* app.use(function(req , res , next){
+	 console.log(app.locals.user);
 	 var _user = req.session.user;
 	 if(_user){
 		 app.locals.user = _user;
 	 }
 	 return next();
- });
+ });*/
 //路由
 app.get('/' , function(req , res){
-	var result = md.render('# markdown-it rulezz!');
-	res.render('home' , {result : result});
+	articleController.list(req , res , function(err , articles){
+		if(err) {
+			console.log('article find err.');
+		}else {
+			//var result = md.render(articles);
+			res.render('home' , {articles : articles , user : req.session.user});
+		}
+	});
 });
 app.get('/home' , function(req , res){
-	var articles = [
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		{
-			img : '',
-			nickname : '32612254@qq.com',
-			title : 'express开发中的常见问题',
-			updatetime : '13分钟前',
-			goodidea : 36,
-		},
-		
-	]
-	var result = md.render('# markdown-it rulezz!');
-	res.render('home' , {articles : articles});
+	articleController.list(req , res , function(err , articles){
+		if(err) {
+			console.log('article find err.');
+		}else {
+			//var result = md.render(articles);
+			res.render('home' , {articles : articles , user : req.session.user});
+		}
+	});
 });
 app.get('/user' , function(req , res){
-	res.render('user');
+	res.render('user' , { user : req.session.user});
 });
 //用户登录路由
 app.get('/signin' , function(req , res){
-	res.render('signin');
+	res.render('signin', { user : req.session.user});
 });
 //用户注册路由
 app.get('/signup' , function(req , res){
-	res.render('signup');
+	res.render('signup', { user : req.session.user});
 });
 //用户退出路由
 app.get('/signout' , function(req , res){
-	console.log(req.session.user);
 		delete app.locals.user;
 		delete req.session.user;
 		res.render('home');
 });
+//用户写文章路由
+app.get('/write_blog' , function(req , res){
+		res.render('write', { user : req.session.user});
+});
+
+
 //用户注册
 app.post('/user/signup' , function(req , res , next){
 	//var _user = req.body.user;
@@ -141,6 +130,7 @@ app.post('/user/signup' , function(req , res , next){
 			res.render('signup' , {msg : '用户已存在'});
 		}else{
 			userController.add(req ,res);
+			console.log(user);
 			res.redirect('/');
 		}
 	});
@@ -169,6 +159,10 @@ app.post('/user/signin' , function(req , res){
 			res.render('signin' , {msg : '用户密码错误'});
 		}
 	});
+});
+//提交文章
+app.post('/save_blog' , function(req , res){
+	articleController.add(req , res);
 });
 app.listen(app.get('port') , function(){
 	console.log('Express started on http://139.199.168.15:' + app.get('port') + ';pressCtrl-C to terminate.');

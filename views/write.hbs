@@ -1,0 +1,24 @@
+﻿<div class="content_write">
+	<div class="content_write_left">
+		<div class="content_write_left_bag">
+			<div class="content_write_title">
+				<input type="text" id="title"/>
+				<input type="hidden" id="username" value="{{user.username}}"/>
+				<input type="hidden" id="avatar" value="{{user.avatar}}"/>
+			</div>
+			<div class="content_write_article">
+				<textarea spellcheck="false" oninput="getContent();" id="text"></textarea>
+			</div>
+			<div class="content_write_submit">
+				<input type="button" value="保存" onclick="submitArticle();"/>
+			</div>
+		</div>
+	</div>
+	<div class="content_write_right">
+		<div class="content_write_right_bag" id="show_text">
+		 {{{txt}}}
+		</div>
+	</div>
+</div>
+<script src="/js/markdown-it.js"></script>
+<script src="/js/write.js"></script>

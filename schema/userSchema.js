@@ -38,6 +38,15 @@ var userSchema = new mongoose.Schema({
 		}
 	}
 });
+userSchema.add({
+	avatar : {
+		type : String,
+		default : '/img/idea.png'
+	},
+	phone : String,
+	birthday : Date
+	
+});
 //静态方法 可以由类调用
 userSchema.statics = {
 	fetch : function(cb){
