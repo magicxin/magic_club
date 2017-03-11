@@ -23,18 +23,18 @@
 						</div>
 					</div>
 					<nav class="nav">
-						<a class="nav bar" href="/home"><strong>列表1</strong></a>
-						<a class="nav bar"href="/user"><strong>列表2</strong></a>
-						<a class="nav bar"><strong>列表3</strong></a>
+						<a class="nav bar" href="/home"><strong>首页</strong></a>
+						<a class="nav bar"href="/user"><strong>排行</strong></a>
+						<a class="nav bar"><strong>分类</strong></a>
 						<a class="nav bar"  href="/signup"><strong>注册</strong></a>
 						{{#if user}}
 						<span class="nav bar" onclick="openUserinfo();" id="drop_down1">
 							<strong id="drop_down2">{{user.username}}</strong>
 							<div class="userinfo" id="userinfo">
-								<a class="userinfo_item" href="/home"><strong>个人信息</strong></a>
-								<a class="userinfo_item" href="/home"><strong>列表1</strong></a>
-								<a class="userinfo_item" href="/home"><strong>列表1</strong></a>
-								<a class="userinfo_item" href="/home"><strong>列表1</strong></a>
+								<a class="userinfo_item" href="/user_page"><strong>个人信息</strong></a>
+								<a class="userinfo_item" href="/home"><strong>我的文章</strong></a>
+								<a class="userinfo_item" href="/home"><strong>我的收藏</strong></a>
+								<a class="userinfo_item" href="/user_info"><strong>修改信息</strong></a>
 								<a class="userinfo_item" href="/signout"><strong>退出</strong></a>
 							</div>
 						</span>

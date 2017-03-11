@@ -325,10 +325,127 @@ strong {
 	background : #63C9EB;
 }
 
+/*user_page*/
+
+.user_content {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	max-width : 960px;
+	margin : 0 auto;
+}
+.user_content .left {
+	width : 30%;
+	padding : 40px 0;
+	display : flex;
+	flex-direction : column;
+	background : whitesmoke;
+}
+.user_content .left .avatar {
+	width : 100%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+.user_content .avatar_img {
+	width : 160px;
+	height : 160px;
+	border : 1px solid grey;
+	border-radius : 15px 15px;
+}
+.user_content .left .fans {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	border-bottom : 1px solid grey;
+}
+.user_content .left .fans .star {
+	width : 50%;
+	display : flex;
+	border-right : 1px solid grey;
+	flex-direction : column;
+	
+}
+.user_content .left .fans .follow {
+	width : 50%;
+	display : flex;
+	flex-direction : column;
+}
+ .user_content .fans .num {
+	width : 100%;
+	display : flex;
+	justify-content : center;
+	padding : 20px 0 4px 0;
+	align-items : center;
+ }
+.user_content .fans .name{
+	width : 100%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	padding : 0 0 20px 0;
+} 
+.user_content .left .level {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	border-bottom : 1px solid grey;
+}
+.user_content .left .gold {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+}
+.user_content .left .level .level_name ,.user_content .left .level .level_num {
+	width : 50%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	padding : 10px 0;
+}
+.user_content .left .gold .gold_name ,  .user_content .left .gold .gold_num {
+	width : 50%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	padding : 10px 0;
+}
 
 
-
-
+.user_content .right {
+	width : calc(100% - 80px);
+	padding : 40px 40px;
+	display : flex;
+	flex-direction : column;
+}
+.user_content .right .title {
+	width : 100%;
+	margin : 0 auto;
+}
+.user_content .right .nickname ,.user_content .right .phone ,.user_content .right .place {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	margin : 10px 0;
+	background : #A8F6F7;
+}
+.user_content .right .info {
+	width : 100%;
+	display : flex;
+	flex-direction : column;
+	margin : 10px 0;
+	background : #A8F6F7;
+}
+.user_content .right .name , .user_content .right .value {
+	width : 50%;
+	display : flex;
+	justify-content : flex-start;
+	align-items : flex-start;
+	padding : 10px 0;
+} 
+.user_content .right .info .name ,.user_content .right .info .value {
+	
+}
 
 
 

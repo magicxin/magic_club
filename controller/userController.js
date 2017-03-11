@@ -48,12 +48,57 @@ module.exports = {
 			})
 		})
 	},
-	findByUsername : function(req , res , func){
+	signin : function(req , res){
+		var password = req.body.user.password;
 		var username = req.body.user.username;
-		User.findOne({username : username} , func);	
+		User.findOne({username : username} , function(err , user){
+			if(err){
+				console.log('signin err');
+			}
+			if(user){
+				User.comparePwd(password , user.password , function(err , isMatch){
+					if(err){
+						console.log('compare password err');
+					}
+					if(isMatch){
+						req.session.user = user;
+						res.render('user_page' , {user : user});
+					}else {
+						res.render('signin' , {msg : '用户密码错误'});
+					}
+				});
+			}else{
+				res.render('signin' , {msg : '用户密码错误'});
+			}
+		});
 	},
-	comparePwd : function(_password , password , func){
-		User.comparePwd(_password , password , func);
+	signup : function(req , res , next){
+		//var _user = req.body.user;
+		//var user = new User(_user);
+		//user.save();
+		//var user1 = new User({ name: 'sss' });
+		//user1.save();
+		var username = req.body.user.username;
+		User.findOne({username : username} , function(err , user){
+			if(user){
+				res.render('signup' , {msg : '用户已存在'});
+			}else{
+				var _user = new User(req.body.user);
+				console.log(_user)
+				_user.save(function(err ,user){
+					if(err){
+						console.log(err);
+					}
+				});
+				res.redirect('/');
+			}
+		});	
+		//console.log(req.body.user);
+	},
+	signout : function(req , res){
+		delete req.session.user;
+		res.render('home');
 	}
+	
 	
 }

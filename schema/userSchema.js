@@ -44,7 +44,13 @@ userSchema.add({
 		default : '/img/idea.png'
 	},
 	phone : String,
-	birthday : Date
+	birthday : Date,
+	place : String,
+	info : String,
+	levelnum : {
+		type : Number,
+		default : 0
+	}
 	
 });
 //静态方法 可以由类调用

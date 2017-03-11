@@ -36,9 +36,16 @@ module.exports = {
 			}
 		});
 	},*/
-	list : function(req , res ,func){
-		return Article.find({} , func);
-	},
+	list : function(req , res){
+		Article.find({} , function(err , articles){
+			if(err) {
+				console.log('article find err.');
+			}else {
+				//var result = md.render(articles);
+				res.render('home' , {articles : articles , user : req.session.user});
+			}
+		});
+	}
 	/*findByUsername : function(req , res , func){
 		var username = req.body.user.username;
 		User.findOne({username : username} , func);	
