@@ -40,7 +40,6 @@ body {
 	justify-content : flex-end;
     max-width : 960px;
 	margin : 0 auto;
-	padding : auto 0;
 }
 .logo {
 	width : 20%;
@@ -122,7 +121,7 @@ div.search:hover input{
 	 text-decoration:none;
 }
 strong {
-	font-weight : auto;
+	font-weight : bolder;
 }
 
 
@@ -427,14 +426,14 @@ strong {
 	display : flex;
 	flex-direction : row;
 	margin : 10px 0;
-	background : #A8F6F7;
+	background : #D2F3FA;;
 }
 .user_content .right .info {
 	width : 100%;
 	display : flex;
 	flex-direction : column;
 	margin : 10px 0;
-	background : #A8F6F7;
+	background : #D2F3FA;;
 }
 .user_content .right .name , .user_content .right .value {
 	width : 50%;
@@ -448,7 +447,101 @@ strong {
 }
 
 
+/*修改个人信息页面*/
 
+.user_info_content {
+	width : 100%;
+	display : flex;
+	justify-content : center;
+	max-width : 960px;
+	margin : 0 auto;
+}
+.user_info_content form {
+	width : 100%;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+	margin : 0 auto;
+}
+.back {
+	width : 60%;
+	display : flex;
+	flex-direction : column;
+	background : #D2F3FA;
+}
+.user_info_content .title  {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	justify-content : flex-start;
+	padding : 10px 0;
+	margin : 10px;
+}
+  .user_info_content .nickname  , .user_info_content .avatar ,
+.user_info_content .phone , .user_info_content .place  {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	justify-content : center;
+	padding : 10px 0;
+	margin : 10px 0;
+}
+ .user_info_content input {
+	 width : 200px;
+	 height : 30px;
+	 background : #ffffff;
+ }
+.user_info_content .info{
+	width : 100%;
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	padding : 10px 0;
+	margin : 10px 0;
+}
+.user_info_content .name {
+	width : 30%;
+	display : flex;
+	align-items : center;
+	justify-content : center;
+}
+ .user_info_content .info .name{
+	width : 30%;
+	display : flex;
+	justify-content : center;
+	padding : 10px 0;
+	margin : 10px 0;
+}
+ .user_info_content .value {
+	width : 70%;
+	display : flex;
+	align-items : center;
+	justify-content : flex-start;
+ }
+ .user_info_content .info .value {
+	 width : 100%;
+	display : flex;
+	justify-content : center;
+ }
+ .user_info_content textarea {
+	 width : 60%;
+	height : 60px;
+	resize:none; 
+	border : none;
+ }
+ .user_info_content .btn {
+	width : 100px;
+	line-height : 30px;
+	background : #79A0DA;
+	margin : 10px 0;
+}
+.user_info_content form input:hover {
+	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
+}
+.user_info_content form input:focus {
+	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
+}
+	
 
 
 

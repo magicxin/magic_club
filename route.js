@@ -1,6 +1,7 @@
 var userController = require('./controller/userController');
 var articleController = require('./controller/articleController');
-module.exports = function(app){
+
+module.exports = function(app , upload){
 
 /*
 **
@@ -40,6 +41,13 @@ app.get('/signout' , userController.signout);
 app.post('/user/signup' , userController.signup);
 //用户登录
 app.post('/user/signin' , userController.signin);
+//上传头像
+app.post('/user/upload' , upload.single('avatar'), function(req , res){
+	if(req.file.path.indexOf('public/') > -1){
+		var ava_path = req.file.path.slice().replace('public/', '');
+	}
+	return res.status(200).end(ava_path);
+});
 
 /*
 **文章路由

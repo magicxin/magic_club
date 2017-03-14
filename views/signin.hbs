@@ -1,15 +1,17 @@
-﻿<form action="/user/signin" method="post">
-	
+﻿<div class="sign">
+	<form action="/user/signin" method="post">
+		
+				<div class="item">
+					<text>{{msg}}</text> 
+				</div>
 			<div class="item">
-				<text>{{msg}}</text> 
+				<text>邮箱</text><input type="text" name="user[username]"/> 
 			</div>
-		<div class="item">
-			<text>邮箱</text><input type="text" name="user[username]"/> 
-		</div>
-		<div class="item">
-			<text>密码</text><input type="password" name="user[password]"/>
-		</div>
-		<div class="item">
-			<input class="btn" type="submit" value="登录"/>
-		</div>
-</form>
+			<div class="item">
+				<text>密码</text><input type="password" name="user[password]"/>
+			</div>
+			<div class="item">
+				<input class="btn" type="submit" value="登录"/>
+			</div>
+	</form>
+</div>

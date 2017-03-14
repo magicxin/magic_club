@@ -7,7 +7,21 @@ const bodyparser = require('body-parser');
 const session = require('express-session');
 const cookie = require('cookie-parser');
 const mongoStore = require('connect-mongo')(session);
-
+//日期格式化
+//var moment = require('moment');
+//moment().format();
+//上传文件解析插件
+const multer  = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + Date.now() +'.png');
+  }
+})
+//const upload = multer({ dest: './public/uploads/' });
+const upload = multer({ storage: storage });
 //marrkdown-it编辑插件
 // node.js, "classic" way
 var md = require('markdown-it')({
@@ -74,7 +88,7 @@ app.use(session({
 	 }
 	 return next();
  });*/
-require('./route')(app);
+require('./route')(app , upload);
 app.listen(app.get('port') , function(){
 	console.log('Express started on http://139.199.168.15:' + app.get('port') + ';pressCtrl-C to terminate.');
 });

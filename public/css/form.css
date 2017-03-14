@@ -1,4 +1,4 @@
-﻿form {
+﻿.sign form {
 	max-width : 400px;
 	height : 300px;
 	display : flex;
@@ -8,25 +8,25 @@
 	margin : 40px auto;
 	box-shadow:0 -1px 10px rgba(0,0,0,0.1);
     /*background-color:#FAFAFA;*/
-    background-image:-webkit-linear-gradient(top,#FFF,#F2F2F2);
-    background-image:-o-linear-gradient(top,#FFF,#F2F2F2);
-    background-image:-ms-linear-gradient(top,#FFF,#F2F2F2);
-    background-image:linear-gradient(top,#FFF,#F2F2F2);
+    background-image:-webkit-linear-gradient(#FFF,#F2F2F2);
+    background-image:-o-linear-gradient(#FFF,#F2F2F2);
+    background-image:-ms-linear-gradient(#FFF,#F2F2F2);
+    background-image:linear-gradient(#FFF,#F2F2F2);
     background-repeat: repeat-x;
 }
-form input:hover {
+.sign form input:hover {
 	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
 }
-form input:focus {
+.sign form input:focus {
 	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
 }
-form input {
+.sign form input {
 	background : #ffffff;
 }
-form text {
+.sign form text {
 	margin-right : 20px;
 }
-.item {
+.sign .item {
 	max-width : 300px;
 	height : 30px;
 	line-height : 30px;
@@ -34,7 +34,7 @@ form text {
 	flex-direction : row;
 	margin : 20px auto;
 }
-.btn {
+.sign .btn {
 	width : 100px;
 	line-height : 30px;
 	background : #79A0DA;
