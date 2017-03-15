@@ -164,12 +164,13 @@ html {overflow-y: scroll;}
 	flex-direction : column;
 	margin : 0 .8em;
 }
+.content_home .hr {
+	border-bottom : .2em solid whitesmoke;
+}
 .article_item {
 	display : flex;
 	flex-direction : row;
-	border-top : .2em solid whitesmoke;
 	border-bottom : .2em solid whitesmoke;
-	margin-bottom : 1em;
 }
 .article_item .left {
 	display : flex;
