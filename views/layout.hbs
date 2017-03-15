@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 		<link href="/css/layout.css" rel="stylesheet" />
 		<link href="/css/form.css" rel="stylesheet" />
 		<link href="/css/markdown.css" rel="stylesheet" />
@@ -9,46 +10,46 @@
 	</head>
 	<body>
 		<div class="container">
-			<header class="header">
-				<div class="header container">
-					<div class="logo">
-						
-					</div>
-					<div class="left_2">
+			<div class="wrapper_layout">
+				<div class="header">
+					<div class="logo"></div>
+					<div class="wrapper_search">
 						<div class="search">
-							<div class="search img">
-							
-							</div>
+							<div class="img"></div>
 							<input type="text"/>
 						</div>
 					</div>
-					<nav class="nav">
-						<a class="nav bar" href="/home"><strong>首页</strong></a>
-						<a class="nav bar"href="/user"><strong>排行</strong></a>
-						<a class="nav bar"><strong>分类</strong></a>
-						<a class="nav bar"  href="/signup"><strong>注册</strong></a>
-						{{#if user}}
-						<span class="nav bar" onclick="openUserinfo();" id="drop_down1">
-							<strong id="drop_down2">{{user.username}}</strong>
-							<div class="userinfo" id="userinfo">
-								<a class="userinfo_item" href="/user_page"><strong>个人信息</strong></a>
-								<a class="userinfo_item" href="/home"><strong>我的文章</strong></a>
-								<a class="userinfo_item" href="/home"><strong>我的收藏</strong></a>
-								<a class="userinfo_item" href="/user_info"><strong>修改信息</strong></a>
-								<a class="userinfo_item" href="/signout"><strong>退出</strong></a>
-							</div>
-						</span>
-						{{else}}
-						<a class="nav bar" href="/signin"><strong>登录</strong></a>
-						{{/if}}
-					</nav>
+					<div class="nav">
+						<ul>
+							<li><a href="/home"><strong>首页</strong></a></li>
+							<li><a href="/user"><strong>排行</strong></a></li>
+							<li><a href="/user"><strong>分类</strong></a></li>
+							<li><a href="/signup"><strong>注册</strong></a></li>
+							{{#if user}}
+							<span class="bar" onclick="openUserinfo();" id="drop_down1">
+								<img id="drop_down2" src="/img/upload_avatar.png" />
+								<!--<strong id="drop_down2">{{user.username}}</strong>-->
+								<div class="userinfo" id="userinfo">
+									<a class="userinfo_item" href="/user_page"><strong>个人信息</strong></a>
+									<a class="userinfo_item" href="/home"><strong>我的文章</strong></a>
+									<a class="userinfo_item" href="/home"><strong>我的收藏</strong></a>
+									<a class="userinfo_item" href="/user_info"><strong>修改信息</strong></a>
+									<a class="userinfo_item" href="/signout"><strong>退出</strong></a>
+								</div>
+							</span>
+							{{else}}
+							<li><a href="/signin"><strong>登录</strong></a></li>
+							{{/if}}
+						</ul>
+					</div>
 				</div>
-			</header>
+			</div>
+			
 			{{{body}}}
 			<script src="/js/client.js"></script>
-			<footer>
+			<div>
 			
-			</footer>
+			</div>
 		</div>
 	</body>
 </html>
