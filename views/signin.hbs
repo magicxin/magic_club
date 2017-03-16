@@ -1,9 +1,11 @@
 ﻿<div class="sign">
 	<form action="/user/signin" method="post">
 		
+			{{#if msg}}
 				<div class="item">
 					<text>{{msg}}</text> 
 				</div>
+			{{/if}}
 			<div class="item">
 				<text>邮箱</text><input type="text" name="user[username]"/> 
 			</div>

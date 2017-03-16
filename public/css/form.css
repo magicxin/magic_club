@@ -1,41 +1,49 @@
 ﻿.sign form {
-	max-width : 400px;
-	height : 300px;
-	display : flex;
-	flex-direction : column;
-	justify-content : center;
-	background : whitesmoke;
-	margin : 40px auto;
-	box-shadow:0 -1px 10px rgba(0,0,0,0.1);
-    /*background-color:#FAFAFA;*/
-    background-image:-webkit-linear-gradient(#FFF,#F2F2F2);
-    background-image:-o-linear-gradient(#FFF,#F2F2F2);
-    background-image:-ms-linear-gradient(#FFF,#F2F2F2);
-    background-image:linear-gradient(#FFF,#F2F2F2);
-    background-repeat: repeat-x;
-}
-.sign form input:hover {
-	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
-}
-.sign form input:focus {
-	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
-}
-.sign form input {
-	background : #ffffff;
-}
-.sign form text {
-	margin-right : 20px;
-}
-.sign .item {
-	max-width : 300px;
-	height : 30px;
-	line-height : 30px;
-	display : flex;
-	flex-direction : row;
-	margin : 20px auto;
-}
-.sign .btn {
-	width : 100px;
-	line-height : 30px;
-	background : #79A0DA;
+		max-width : 400px;
+		display : flex;
+		flex-direction : column;
+		justify-content : center;
+		box-shadow:0 -1px 10px rgba(0,0,0,0.1);
+		/*background-color:#FAFAFA;*/
+		background-image:-webkit-linear-gradient(#FFF,#D9D9D9);
+		background-image:-o-linear-gradient(#FFF,#D9D9D9);
+		background-image:-ms-linear-gradient(#FFF,#D9D9D9);
+		background-image:linear-gradient(#FFF,#D9D9D9);
+		background-repeat: repeat-x;
+	}
+	.sign form input:hover {
+		box-shadow:0 -1px 10px rgba(23,76,204,0.6);
+	}
+	.sign form input:focus {
+		box-shadow:0 -1px 10px rgba(23,76,204,0.6);
+	}
+	.sign form input {
+		background : #ffffff;
+		text-align : center;
+		border : none;
+	}
+	.sign form text {
+		margin-right : 1.4em;
+	}
+	.sign .item {
+		max-width : 300px;
+		height : 2em;
+		line-height : 2em;
+		display : flex;
+		flex-direction : row;
+		margin : .8em auto;
+	}
+	.sign .btn {
+		width : 100px;
+		line-height : 2em;
+		background : #79A0DA;
+	}
+@media screen and (min-width : 768px){
+	.sign form {
+		height : 20em;
+		margin : 3em auto;
+	}
+	.sign .item {
+		margin : 1.4em auto;
+	}
 }

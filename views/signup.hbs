@@ -1,18 +1,22 @@
 ﻿<div class="sign">
-	<form action="/user/signup" method="POST">
+	<form id="signup" action="/user/signup" method="POST">
 	{{#if msg}}
-		<div class="item">
+		<div class="mark">
 			<text>{{msg}}</text> 
 		</div>
 	{{/if}}
-	<div class="item">
-		<text>邮箱</text><input type="text" name="user[username]"/>
+	<div class="mark" id="show"style="display : none ; font-size : 10px ; color : red; ">
+			<text id="show_text"></text> 
 	</div>
 	<div class="item">
-		<text>密码</text><input type="password" name="user[password]"/>
+		<text>邮箱</text><input id="username" type="text" name="user[username]"/>
 	</div>
 	<div class="item">
-		<input class="btn" type="submit" value="注册"/>
+		<text>密码</text><input id="password" type="password" name="user[password]"/>
+	</div>
+	<div class="item">
+		<input class="btn" onclick="submitForm()" value="注册"/>
 	</div>
 </form>
+	
 </div>
