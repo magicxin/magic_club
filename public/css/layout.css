@@ -1,4 +1,4 @@
-﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
 body { background:#fff; color:#555; font-size:100%; font-family: Verdana, Arial, Helvetica, sans-serif; }
 td,th,caption { font-size:100%; }
 img { border:none; }
@@ -115,7 +115,7 @@ html {overflow-y: scroll;}
 	display : none; 
 	position: absolute;
 	top: 100%;
-	left: -4em;
+	left: -5em;
 	margin-top : 1em;
 	z-index: 100;
 	background-color: #ffffff;
@@ -504,7 +504,8 @@ html {overflow-y: scroll;}
 	margin : 0 auto;
 }
 .back {
-	width : 60%;
+    width : 60%;
+    min-width: 320px;
 	display : flex;
 	flex-direction : column;
 	background : #D2F3FA;
@@ -514,66 +515,57 @@ html {overflow-y: scroll;}
 	display : flex;
 	flex-direction : row;
 	justify-content : flex-start;
-	padding : 10px 0;
-	margin : 10px;
+	padding : .8em 0;
+	margin : .8em 0;
 }
   .user_info_content .nickname  , .user_info_content .avatar ,
-.user_info_content .phone , .user_info_content .place  {
+.user_info_content .phone , .user_info_content .place ,.user_info_content .info {
 	width : 100%;
 	display : flex;
 	flex-direction : row;
 	justify-content : center;
-	padding : 10px 0;
-	margin : 10px 0;
+	padding : .8em 0;
+}
+.user_info_content .avatar img {
+    width : 64px;
+    height : 64px;
 }
  .user_info_content input {
-	 width : 200px;
-	 height : 30px;
+	 width : 14em;
+	 height : 2em;
+     border : none;
 	 background : #ffffff;
  }
-.user_info_content .info{
-	width : 100%;
-	display : flex;
-	flex-direction : column;
-	justify-content : center;
-	padding : 10px 0;
-	margin : 10px 0;
-}
 .user_info_content .name {
-	width : 30%;
 	display : flex;
+    flex : 1 1 0;
 	align-items : center;
 	justify-content : center;
 }
- .user_info_content .info .name{
-	width : 30%;
-	display : flex;
-	justify-content : center;
-	padding : 10px 0;
-	margin : 10px 0;
-}
  .user_info_content .value {
-	width : 70%;
 	display : flex;
+    flex : 3 1 0;
 	align-items : center;
 	justify-content : flex-start;
  }
- .user_info_content .info .value {
-	 width : 100%;
+ .user_info_content .text_area {
+    width : 100%;
 	display : flex;
 	justify-content : center;
+    margin : .8em 0;
  }
  .user_info_content textarea {
-	 width : 60%;
-	height : 60px;
+	width : 80%;
+	height : 6em;
 	resize:none; 
 	border : none;
+     padding : .4em;
  }
  .user_info_content .btn {
-	width : 100px;
-	line-height : 30px;
+	width : 7em;
+	line-height : 2em;
 	background : #79A0DA;
-	margin : 10px 0;
+	margin : .7em 0;
 }
 .user_info_content form input:hover {
 	box-shadow:0 -1px 10px rgba(23,76,204,0.6);

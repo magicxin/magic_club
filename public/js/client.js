@@ -1,5 +1,57 @@
-﻿var username = null;
-var password = null;
+ var formvalidator = new FormValidator('signupForm',
+    [
+        {
+            name : 'user[username]',
+            display : '邮箱',
+            rules : 'required|valid_email' 
+        },
+        {
+            name : 'user[password]',
+            display : '密码',
+            rules : 'required|valid_password' 
+        }
+    ],
+    function(errors, event) {
+        if (errors.length > 0) {
+            // Show the errors0
+            document.getElementById('show_text').innerHTML = errors[0].message;
+        }
+    });  
+
+ var userinfo_validator = new FormValidator('userinfoForm',
+    [
+        {
+            name : 'user[name]',
+            display : '昵称',
+            rules : 'required' 
+        },
+        {
+            name : 'user[avatar]',
+            display : '头像',
+            rules : 'required' 
+        },
+        {
+            name : 'user[phone]',
+            display : '电话',
+            rules : 'required' 
+        },
+        {
+            name : 'user[place]',
+            display : '地址',
+            rules : 'required' 
+        },
+        {
+            name : 'user[info]',
+            display : '个人简介',
+            rules : 'required' 
+        }
+    ],
+    function(errors, event) {
+        if (errors.length > 0) {
+            // Show the errors0
+            document.getElementById('show_text').innerHTML = errors[0].message;
+        }
+    });  
 /*各类dom事件*/
  function openUserinfo(){
 	var ele = document.getElementById('userinfo');
@@ -19,41 +71,44 @@ var password = null;
 }
 
 
-/*文章*/
+/*个人信息*/
 function uploadAvatar(){
  /* FormData 是表单数据类 */
  var fd = new FormData();
  var ajax = new XMLHttpRequest();
+ var str = document.getElementById("avatar").value.toLowerCase()
+ var position = str.lastIndexOf('.');
+ var sub_str =  str.substring(position);
+ console.log(sub_str)
 // fd.append("upload", 1);
  /* 把文件添加到表单里 */
- fd.append("avatar", document.getElementById("avatar").files[0]);
- console.log(fd)
- ajax.open("post", "/user/upload", true);
+    if(sub_str === '.png' || sub_str === '.jpg' || sub_str === '.jpeg' || sub_str === '.bmp'){
+         fd.append("avatar", document.getElementById("avatar").files[0]);
+         console.log(fd)
+         ajax.open("post", "/user/upload", true);
+
+         ajax.onload = function () {
+         //console.log(ajax.responseText)
+         document.getElementById("show_avatar").src = ajax.responseText;
+         document.getElementById("avatar_value").value = ajax.responseText;
+         console.log(document.getElementById("avatar_value").value)
+         };
+        /* ajax.onreadystatechange = function(){
+                if(ajax.readyState == 4 && ajax .status == 200){
+                    console.log(ajax.responseText)
+                    document.getElementById("show_avatar").src = ajax.responseText.path;
+                }
+            };*/
+         ajax.send(fd);
+    }else {
+        console.log(sub_str)
+        alert('请选择png格式图片文件');
+    }
+
+}
+    
  
- ajax.onload = function () {
- console.log(ajax.responseText)
- document.getElementById("show_avatar").src = ajax.responseText;
- };
-/* ajax.onreadystatechange = function(){
-		if(ajax.readyState == 4 && ajax .status == 200){
-			console.log(ajax.responseText)
-			document.getElementById("show_avatar").src = ajax.responseText.path;
-		}
-	};*/
- ajax.send(fd);
-}
-/*用户*/
-//注册
-function submitForm(){
-		username = document.getElementById('username').value;
-		password = document.getElementById('password').value;
-		if(username && password){
-			document.getElementById('signup').submit();
-		}else {
-			document.getElementById('show').style.display = 'block';
-			document.getElementById('show_text').innerHTML = '您的输入有误';
-		}
-}
+
 
 
 

@@ -5,56 +5,57 @@ module.exports = function(app , upload){
 
 /*
 **
-*Ò³ÃæÌø×ª
+*é¡µé¢è·³è½¬
 */
 app.get('/user' , function(req , res){
 	res.render('user' , { user : req.session.user});
 });
-//ÓÃ»§µÇÂ¼
+//ç”¨æˆ·ç™»å½•
 app.get('/signin' , function(req , res){
 	res.render('signin', { user : req.session.user});
 });
-//ÓÃ»§×¢²á
+//ç”¨æˆ·æ³¨å†Œ
 app.get('/signup' , function(req , res){
 	res.render('signup', { user : req.session.user});
 });
-//ÓÃ»§¸öÈËÖ÷Ò³
+//ç”¨æˆ·ä¸ªäººä¸»é¡µ
 app.get('/user_page' , function(req , res){
 		res.render('user_page' , {user : req.session.user});
 	});
-	//ÓÃ»§ĞÅÏ¢
+	//ç”¨æˆ·ä¿¡æ¯
 app.get('/user_info' , function(req , res){
 		res.render('user_info', { user : req.session.user});
 	});
-	//Ğ´ÎÄÕÂ
+	//å†™æ–‡ç« 
 app.get('/write_blog' , function(req , res){
 		res.render('write', { user : req.session.user});
 });
 
 /*
-**ÓÃ»§Â·ÓÉ
+**ç”¨æˆ·è·¯ç”±
 **author : magic
 */
-//ÓÃ»§ÍË³öÂ·ÓÉ
+//ç”¨æˆ·é€€å‡ºè·¯ç”±
 app.get('/signout' , userController.signout);
-//ÓÃ»§×¢²á
+//ç”¨æˆ·æ³¨å†Œ
 app.post('/user/signup' , userController.signup);
-//ÓÃ»§µÇÂ¼
+//ç”¨æˆ·ç™»å½•
 app.post('/user/signin' , userController.signin);
-//ÉÏ´«Í·Ïñ
+//ä¸Šä¼ å¤´åƒ
 app.post('/user/upload' , upload.single('avatar'), function(req , res){
 	if(req.file.path.indexOf('public/') > -1){
 		var ava_path = req.file.path.slice().replace('public/', '');
 	}
 	return res.status(200).end(ava_path);
 });
-
+//ç”¨æˆ·ä¿¡æ¯
+app.post('/user/setuserinfo' , userController.setUserinfo);
 /*
-**ÎÄÕÂÂ·ÓÉ
+**æ–‡ç« è·¯ç”±
 **author : magic
 */
 app.get('/' , articleController.list);
 app.get('/home' , articleController.list);
-//Ìá½»ÎÄÕÂ
+//æäº¤æ–‡ç« 
 app.post('/save_blog' , articleController.add);
 };

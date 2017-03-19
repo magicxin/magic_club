@@ -1,5 +1,5 @@
-﻿<div class="user_info_content">
-	<form action="" method="post">
+<div class="user_info_content">
+	<form name="userinfoForm" action="/user/setuserinfo" method="post">
 		<div class="back">
 			<div class="title">
 			<h1>个人资料</h1>
@@ -10,8 +10,9 @@
 			</div>
 			<div class="value">
 				<label for="avatar">
-					<img src="img/upload_avatar.png" id="show_avatar"/>
-					<input type="file"  id="avatar" style="display : none" onchange="uploadAvatar();"/>
+					<img src="img/upload_avatar.png" id="show_avatar" />
+                    <input type="text" id="avatar_value" style="display : none" name="user[avatar]" />
+					<input type="file"  id="avatar" value="" style="display : none" onchange="uploadAvatar();"/>
 				</label>
 			</div>
 			
@@ -21,7 +22,7 @@
 				昵称
 			</div>
 			<div class="value">
-				<input type="text" placeholder="请输入昵称"/>
+				<input type="text" name="user[name]" placeholder="请输入昵称"/>
 			</div>
 		</div>
 		<div class="phone">
@@ -29,7 +30,7 @@
 				电话
 			</div>
 			<div class="value">
-				<input type="text" placeholder="请输入电话"/>
+				<input type="text" name="user[phone]" placeholder="请输入电话"/>
 			</div>
 		</div>
 		<div class="place">
@@ -37,7 +38,7 @@
 				地址
 			</div>
 			<div class="value">
-				<input type="text" placeholder="请输入地址"/>
+				<input type="text" name="user[place]" placeholder="请输入地址"/>
 			</div>
 		</div>
 		<div class="info">
@@ -45,12 +46,15 @@
 				个人简介
 			</div>
 			<div class="value">
-				<textarea> </textarea>
+				
 			</div>
+		</div>
+        <div class="text_area">
+			<textarea name="user[info]"></textarea>
 		</div>
 	</div>
 	<div>
-		<input type="button" class="btn" value="确定" />
+		<input type="submit" class="btn" value="确定" />
 	</div>
 	</form>
 </div>

@@ -1,4 +1,4 @@
-﻿const http = require('http');
+const http = require('http');
 const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
