@@ -1,5 +1,6 @@
 const User = require('../model/User');
 const _ = require('underscore');
+const regex = require('../public/lib/regex');
 module.exports = {
 	add : function(req , res ){
 		var _user = new User(req.body.user);
@@ -82,9 +83,9 @@ module.exports = {
 		//user.save();
 		//var user1 = new User({ name: 'sss' });
 		//user1.save();
-        var valid_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        var valid_password = /^[a-zA-Z]\w{5,17}$/;
-        
+        var valid_email = regex.valid_email;
+        var valid_password = regex.valid_password;
+        console.log(valid_password)
         if(valid_password.test(req.body.user.password) && valid_email.test(req.body.user.username)){
         var username = req.body.user.username;
 		User.findOne({username : username} , function(err , user){
@@ -113,6 +114,12 @@ module.exports = {
 	},
     setUserinfo : function(req , res){
         console.log(req.body.user);
+    },
+    uploadAvatar : function(req , res){
+        if(req.file.path.indexOf('public/') > -1){
+            var ava_path = req.file.path.slice().replace('public/', '');
+        }
+        return res.status(200).end(ava_path);
     }
 	
 	

@@ -42,12 +42,7 @@ app.post('/user/signup' , userController.signup);
 //用户登录
 app.post('/user/signin' , userController.signin);
 //上传头像
-app.post('/user/upload' , upload.single('avatar'), function(req , res){
-	if(req.file.path.indexOf('public/') > -1){
-		var ava_path = req.file.path.slice().replace('public/', '');
-	}
-	return res.status(200).end(ava_path);
-});
+app.post('/user/upload' , upload.single('avatar'), userController.uploadAvatar);
 //用户信息
 app.post('/user/setuserinfo' , userController.setUserinfo);
 /*
