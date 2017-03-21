@@ -41,7 +41,8 @@
             less_than_date: 'The %s field must contain an older date than %s.',
             greater_than_or_equal_date: 'The %s field must contain a date that\'s at least as recent as %s.',
             less_than_or_equal_date: 'The %s field must contain a date that\'s %s or older.',
-            valid_password : '请输入6-16字母开头，以字母数字下划线组合的%s。'//'The %s field must contain a valid password.'
+            valid_password : '请输入6-16字母开头，以字母数字下划线组合的%s。',//'The %s field must contain a valid password.'
+            valid_phone : '请输入11位手机号。'
         },
         callback: function(errors) {
 
@@ -68,7 +69,8 @@
         urlRegex = /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
         dateRegex = /\d{4}-\d{1,2}-\d{1,2}/,
         /*add myself*/
-        passwordRegex = /^[a-zA-Z]\w{5,15}$/;
+        passwordRegex = /^[a-zA-Z]\w{5,15}$/,
+        phoneRegex = /^1\d{10}$/;
 
     /*
      * The exposed public object to validate a form:
@@ -125,8 +127,11 @@
         this.form.onsubmit = (function(that) {
             return function(evt) {
                 try {
+                    console.log('try');
                     return that._validateForm(evt) && (_onsubmit === undefined || _onsubmit());
-                } catch(e) {}
+                } catch(e) {
+                    console.log('catch');
+                }
             };
         })(this);
     },
@@ -264,12 +269,12 @@
 
     FormValidator.prototype._validateForm = function(evt) {
         this.errors = [];
-
+        console.log('run')
         for (var key in this.fields) {
             if (this.fields.hasOwnProperty(key)) {
                 var field = this.fields[key] || {},
                     element = this.form[field.name];
-
+                console.log(this.fields[key])
                 if (element && element !== undefined) {
                     field.id = attributeValue(element, 'id');
                     field.element = element;
@@ -487,7 +492,9 @@
          valid_password: function(field) {
             return passwordRegex.test(field.value);
         },
-
+        valid_phone: function(field) {
+            return phoneRegex.test(field.value);
+        },
         min_length: function(field, length) {
             if (!numericRegex.test(length)) {
                 return false;

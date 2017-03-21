@@ -1,5 +1,5 @@
 <div class="user_info_content">
-	<form name="userinfoForm" action="/user/setuserinfo" method="post">
+	<form name="userinfoForm" action="/user/setuserinfo" method="POST">
 		<div class="back">
 			<div class="title">
 			<h1>个人资料</h1>
@@ -22,7 +22,7 @@
 				昵称
 			</div>
 			<div class="value">
-				<input type="text" name="user[name]" placeholder="请输入昵称"/>
+				<input type="text" name="user[name]" placeholder="请输入昵称" maxlength="6" />
 			</div>
 		</div>
 		<div class="phone">
@@ -30,7 +30,7 @@
 				电话
 			</div>
 			<div class="value">
-				<input type="text" name="user[phone]" placeholder="请输入电话"/>
+				<input type="text" name="user[phone]" placeholder="请输入电话" maxlength="11"/>
 			</div>
 		</div>
 		<div class="place">
@@ -38,7 +38,7 @@
 				地址
 			</div>
 			<div class="value">
-				<input type="text" name="user[place]" placeholder="请输入地址"/>
+				<input type="text" name="user[place]" placeholder="请输入地址" maxlength="11"/>
 			</div>
 		</div>
 		<div class="info">
@@ -50,11 +50,30 @@
 			</div>
 		</div>
         <div class="text_area">
-			<textarea name="user[info]"></textarea>
+			<textarea name="user[info]" maxlength="100"></textarea>
 		</div>
 	</div>
 	<div>
-		<input type="submit" class="btn" value="确定" />
+		<input type="submit" name="submit" class="btn" value="确定" />
 	</div>
 	</form>
 </div>
+<script src="/lib/validate.js"></script>
+<script>
+    console.log(0)
+    var userinfo_validator = new FormValidator('userinfoForm',
+    [
+        {
+            name : 'user[name]',
+            display : '昵称',
+            rules : 'required' 
+        }
+    ],
+    function(errors, event) {
+        if (errors.length > 0) {
+            // Show the errors0
+            console.log(errors[0].message);
+            //document.getElementById('show_text').innerHTML = errors[0].message;
+        }
+    });  
+</script>

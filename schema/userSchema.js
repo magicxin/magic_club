@@ -1,6 +1,7 @@
-﻿const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 //密码算法bcrypt
 const bcrypt = require('bcrypt');
+const regex = require('../public/lib/regex');
 //加密级别
 const SALT_WORK_FACTOR = 10;
 var userSchema = new mongoose.Schema({
@@ -79,7 +80,8 @@ userSchema.pre('save' , function(next){
 		this.meta.updataAt =Date.now();
 	}
 	//对保存的密码进行加密操作
-	bcrypt.genSalt(SALT_WORK_FACTOR , function(err , salt){
+	if(regex.valid_password.test(user.password)){
+        bcrypt.genSalt(SALT_WORK_FACTOR , function(err , salt){
 		if(err){
 			return next(err);
 		}
@@ -91,6 +93,9 @@ userSchema.pre('save' , function(next){
 			next();
 		});
 	});
+    }else {
+            next();
+        }
 	//next();
 });
 module.exports = userSchema;

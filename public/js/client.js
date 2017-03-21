@@ -1,57 +1,5 @@
- var formvalidator = new FormValidator('signupForm',
-    [
-        {
-            name : 'user[username]',
-            display : '邮箱',
-            rules : 'required|valid_email' 
-        },
-        {
-            name : 'user[password]',
-            display : '密码',
-            rules : 'required|valid_password' 
-        }
-    ],
-    function(errors, event) {
-        if (errors.length > 0) {
-            // Show the errors0
-            document.getElementById('show_text').innerHTML = errors[0].message;
-        }
-    });  
 
- var userinfo_validator = new FormValidator('userinfoForm',
-    [
-        {
-            name : 'user[name]',
-            display : '昵称',
-            rules : 'required' 
-        },
-        {
-            name : 'user[avatar]',
-            display : '头像',
-            rules : 'required' 
-        },
-        {
-            name : 'user[phone]',
-            display : '电话',
-            rules : 'required' 
-        },
-        {
-            name : 'user[place]',
-            display : '地址',
-            rules : 'required' 
-        },
-        {
-            name : 'user[info]',
-            display : '个人简介',
-            rules : 'required' 
-        }
-    ],
-    function(errors, event) {
-        if (errors.length > 0) {
-            // Show the errors0
-            document.getElementById('show_text').innerHTML = errors[0].message;
-        }
-    });  
+ 
 /*各类dom事件*/
  function openUserinfo(){
 	var ele = document.getElementById('userinfo');

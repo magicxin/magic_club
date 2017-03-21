@@ -66,15 +66,15 @@ module.exports = {
 						req.session.user = user;
 						res.render('user_page' , {user : user});
 					}else {
-						res.render('signin' , {msg : '用户名密码错误'});
+						res.render('signin' , {msg : '用户名密码错误' ,user : req.session.user});
 					}
 				});
 			}else{
-				res.render('signin' , {msg : '用户名密码错误'});
+				res.render('signin' , {msg : '用户名密码错误' ,user : req.session.user});
 			}
 		  });
         }else{
-            res.render('signin' , {msg : '请输入用户名密码'});
+            res.render('signin' , {msg : '请输入用户名密码' ,user : req.session.user});
         }
 	},
 	signup : function(req , res , next){
@@ -103,7 +103,7 @@ module.exports = {
 			}
 		});	
         }else {
-            res.render('signup' , {msg : '请合法输入用户名密码'});
+            res.render('signup' , {msg : '请合法输入用户名密码' , user : req.session.user});
         }
 		//console.log(req.body.user);
 	},
@@ -113,7 +113,33 @@ module.exports = {
 		res.render('home');
 	},
     setUserinfo : function(req , res){
-        console.log(req.body.user);
+        var valid_phone = regex.valid_phone;
+        var userinfo = req.body.user;
+        var userParams = {
+          avatar : userinfo.avatar,
+          phone : userinfo.phone,
+          name : userinfo.name,
+          place : userinfo.place,
+          info : userinfo.info
+        };
+        if(valid_phone.test(userinfo.phone) && userinfo.name.length <= 6 && userinfo.place.length <= 11 && userinfo.info.length <= 100){
+            console.log(req.session.user._id)
+            User.findById(req.session.user._id , function(err , user){   
+			if(err){
+				console.log(err);
+			}else{
+				var _user = _.extend(user , userParams);
+				_user.save(function(err , user){
+					if(err){
+						console.log(err);
+					}else{
+                        req.session.user = user;
+						res.render('user_page' , {user : user});
+					}
+				});
+			}
+		});  
+        }
     },
     uploadAvatar : function(req , res){
         if(req.file.path.indexOf('public/') > -1){
