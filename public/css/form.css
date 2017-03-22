@@ -37,6 +37,7 @@
 		line-height : 2em;
         text-align : center;
 		background : #79A0DA;
+        margin : 0 auto;
 	}
 @media screen and (min-width : 768px){
 	.sign form {

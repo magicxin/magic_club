@@ -27,7 +27,7 @@
 							<li><a href="/signup"><strong>注册</strong></a></li>
 							{{#if user}}
 							<span class="bar" onclick="openUserinfo();" id="drop_down1">
-								<img id="drop_down2" src="/img/upload_avatar.png" />
+								<img id="drop_down2" src="{{user.avatar}}" />
 								<!--<strong id="drop_down2">{{user.username}}</strong>-->
 								<div class="userinfo" id="userinfo">
 									<a class="userinfo_item" href="/user_page"><strong>个人信息</strong></a>

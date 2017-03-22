@@ -106,6 +106,7 @@ html {overflow-y: scroll;}
 	justify-content : center;
 	align-items : center;
 	position: relative;
+    margin-left: .7em;
 }
 .wrapper_layout .bar  img {
 	width : 2.5em;
@@ -364,21 +365,22 @@ html {overflow-y: scroll;}
 	background : #63C9EB;
 }
 
-/*user_page*/
+/*个人详情*/
 
 .user_content {
 	width : 100%;
 	display : flex;
 	flex-direction : row;
+    flex-wrap: wrap;
 	max-width : 960px;
 	margin : 0 auto;
 }
 .user_content .left {
-	width : 30%;
-	padding : 40px 0;
+    width : 320px;
 	display : flex;
 	flex-direction : column;
-	background : whitesmoke;
+    padding : 3em 0;
+    margin : 0 auto;
 }
 .user_content .left .avatar {
 	width : 100%;
@@ -387,10 +389,10 @@ html {overflow-y: scroll;}
 	align-items : center;
 }
 .user_content .avatar_img {
-	width : 160px;
-	height : 160px;
+	width : 6em;
+	height : 6em;
 	border : 1px solid grey;
-	border-radius : 15px 15px;
+	border-radius : 2em 2em;
 }
 .user_content .left .fans {
 	width : 100%;
@@ -414,7 +416,7 @@ html {overflow-y: scroll;}
 	width : 100%;
 	display : flex;
 	justify-content : center;
-	padding : 20px 0 4px 0;
+	padding : 1.4em 0 .3em 0;
 	align-items : center;
  }
 .user_content .fans .name{
@@ -422,7 +424,7 @@ html {overflow-y: scroll;}
 	display : flex;
 	justify-content : center;
 	align-items : center;
-	padding : 0 0 20px 0;
+	padding : 0 0 1.4em 0;
 } 
 .user_content .left .level {
 	width : 100%;
@@ -440,51 +442,61 @@ html {overflow-y: scroll;}
 	display : flex;
 	justify-content : center;
 	align-items : center;
-	padding : 10px 0;
+	padding : .7em 0;
 }
 .user_content .left .gold .gold_name ,  .user_content .left .gold .gold_num {
 	width : 50%;
 	display : flex;
 	justify-content : center;
 	align-items : center;
-	padding : 10px 0;
+	padding : .7em 0;
 }
 
 
 .user_content .right {
-	width : calc(100% - 80px);
-	padding : 40px 40px;
+    min-width : 320px;
 	display : flex;
 	flex-direction : column;
+    margin : 0 auto;
 }
-.user_content .right .title {
-	width : 100%;
-	margin : 0 auto;
+.user_content .items {
+    width : 100%;
+    display : flex;
+    flex-flow : row;
+    padding : .7em 0;
+    margin : .7em 0;
+    background : #D2F3FA;
 }
-.user_content .right .nickname ,.user_content .right .phone ,.user_content .right .place {
-	width : 100%;
-	display : flex;
-	flex-direction : row;
-	margin : 10px 0;
-	background : #D2F3FA;;
+.user_content .items .name {
+    flex : 1 2 0;
+    margin-left : 1em;
 }
-.user_content .right .info {
-	width : 100%;
-	display : flex;
-	flex-direction : column;
-	margin : 10px 0;
-	background : #D2F3FA;;
+.user_content .items .value {
+    flex : 2 1 0;
+    margin-left : 1em;
 }
-.user_content .right .name , .user_content .right .value {
-	width : 50%;
-	display : flex;
-	justify-content : flex-start;
-	align-items : flex-start;
-	padding : 10px 0;
-} 
-.user_content .right .info .name ,.user_content .right .info .value {
-	
+.user_content .info {
+    padding : .7em 0;
+    margin : .7em 0;
+    background : #D2F3FA;
 }
+.user_content .info .value {
+    padding : .4em;
+}
+@media screen and (min-width: 768px){
+	.user_content .avatar_img {
+	width : 12em;
+	height : 12em;
+    }
+    .user_content .right {
+    flex : 2 1 0;
+	padding : 3em 3em;
+    }
+    .user_content .left {
+    flex : 1 1 0;
+    }
+}/* end media 768 */
+/*end 个人详情*/
 
 
 /*修改个人信息页面*/
@@ -573,7 +585,7 @@ html {overflow-y: scroll;}
 .user_info_content form input:focus {
 	box-shadow:0 -1px 10px rgba(23,76,204,0.6);
 }
-	
+
 
 
 

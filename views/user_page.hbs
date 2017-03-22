@@ -1,7 +1,7 @@
 <div class="user_content">
 		<div class="left">
 			<div class="avatar">
-				<img class="avatar_img" src="/{{user.avatar}}" />
+				<img class="avatar_img" src="{{user.avatar}}" />
 			</div>
 			<div class="fans">
 				<div class="star">
@@ -40,9 +40,9 @@
 		</div>
 		<div class="right">
 			<div class="title">
-				<h1>个人信息</h1>
+				<h2>个人信息</h2>
 			</div>
-			<div class="nickname">
+			<div class="items">
 				<div class="name">
 					昵称
 				</div>
@@ -50,7 +50,7 @@
 					{{user.name}}
 				</div>
 			</div>
-			<div class="phone">
+			<div class="items">
 				<div class="name">
 					电话
 				</div>
@@ -58,7 +58,7 @@
 					{{user.phone}}
 				</div>
 			</div>
-			<div class="place">
+			<div class="items">
 				<div class="name">
 					地址
 				</div>
@@ -66,10 +66,15 @@
 					{{user.place}}
 				</div>
 			</div>
-			<div class="info">
+			<div class="items">
 				<div class="name">
 					个人简介
 				</div>
+				<div class="value">
+					
+				</div>
+			</div>
+            <div class="info">
 				<div class="value">
 					{{user.info}}
 				</div>
