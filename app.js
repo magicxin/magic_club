@@ -90,6 +90,6 @@ app.use(session({
  });*/
 require('./route')(app , upload);
 app.listen(app.get('port') , function(){
-	console.log('Express started on http://139.199.168.15:' + app.get('port') + ';pressCtrl-C to terminate.');
+	console.log('Express started on localhost:' + app.get('port') + ';pressCtrl-C to terminate.');
 });
 //server.listen(port , hostname);
