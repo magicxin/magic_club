@@ -1,0 +1,25 @@
+.column {
+	display:flex;
+	flex-flow:column;
+}
+
+.row {
+	display:flex;
+	flex-flow:row;
+}
+.center {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.co-center{
+	display:flex;
+	align-items: center;
+}
+.ro-center{
+	display:flex;
+	justify-content: center;
+}
+.left,.right,.middle {
+	padding:4px;
+}

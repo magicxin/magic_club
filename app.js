@@ -7,6 +7,7 @@ const bodyparser = require('body-parser');
 const session = require('express-session');
 const cookie = require('cookie-parser');
 const mongoStore = require('connect-mongo')(session);
+const User = require('./model/User');
 //日期格式化
 //var moment = require('moment');
 //moment().format();
@@ -56,7 +57,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
-  console.log("connected");
+  console.log("mongodb connected");
   
 });
 //添加模板引擎
@@ -89,6 +90,24 @@ app.use(session({
 	 return next();
  });*/
 require('./route')(app , upload);
+//admin用户
+User.findOne({username : 'admin'} , function(err , user){
+			if(user){
+				return
+			}else{
+				var _user = new User({
+					username:'admin',
+					password:'sx4313207'
+				});
+				console.log(_user)
+				_user.save(function(err ,user){
+					if(err){
+						console.log(err);
+					}
+				});
+			}
+		});
+		
 app.listen(app.get('port') , function(){
 	console.log('Express started on localhost:' + app.get('port') + ';pressCtrl-C to terminate.');
 });
